@@ -42,6 +42,12 @@ body {
 .main-nav a {
   color: rgb(255, 255, 255);
   text-decoration: none;
+  position: relative;
+}
+
+.main-nav a:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 4px;
 }
 
 #nav-toggle { display: none; }
@@ -60,14 +66,13 @@ body {
   margin: 5px 0;
 }
 
-/* HERO */
 .hero {
   position: relative;
   background: url("img/Untitled-1 copy.png") center / cover no-repeat;
   padding: 4rem 2rem;
 }
 
-.hero-overlay {
+- .hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(247,242,234,0.85);
@@ -90,8 +95,28 @@ body {
   color: rgb(255, 255, 255);
   padding: 0.75rem 2rem;
   text-decoration: none;
+  display: inline-block;
 }
 
+transition:
+    transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+
+.button:hover {
+    transform: translateY(var(--lift)) scale(var(--scale));
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    background-color: #333399;
+}
+
+.button:focus-visible {
+    outline: var(--focus-ring);
+    outline-offset: 4px;
+}
+
+.button:active {
+    transform: translateY(0) scale(1);
+    box-shadow: none;
+    background-color: #1a1a55;
+}
 .overview, .gallery { background:#1a1a55; padding: 4rem 4rem; }
 .artists { background: #1a1a55; padding: 4rem 2rem; }
 .visit { background:#7d4905; padding: 4rem 2rem; }
