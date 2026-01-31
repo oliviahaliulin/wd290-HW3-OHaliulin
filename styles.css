@@ -1,0 +1,156 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Georgia, serif;
+  background: #000000;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+.site-header {
+  background: #1a1a55;
+  position: relative;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+.logo img { max-width: 140px; }
+
+.main-nav {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.5rem;
+  justify-self: right;
+}
+
+.main-nav a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+#nav-toggle { display: none; }
+
+.hamburger {
+  display: none;
+  cursor: pointer;
+  justify-self: right;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background: white;
+  margin: 5px 0;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  background: url("img/Untitled-1 copy.png") center / cover no-repeat;
+  padding: 4rem 2rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(247,242,234,0.85);
+}
+
+.hero-content {
+  position: relative;
+  max-width: 850px;
+}
+
+.hero-actions {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.button {
+  background: #1a1a55;
+  color: rgb(255, 255, 255);
+  padding: 0.75rem 2rem;
+  text-decoration: none;
+}
+
+.overview, .gallery { background:#1a1a55; padding: 4rem 4rem; }
+.artists { background: #1a1a55; padding: 4rem 2rem; }
+.visit { background:#7d4905; padding: 4rem 2rem; }
+
+.overview-grid { display: grid; gap: 3rem; }
+.overview-quote { border-left: 6px solid #7d4905; padding-left: 2rem; font-size: 1.6rem; }
+
+
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.artist-card {
+  background: #7d4905;
+  padding: 1rem;
+  text-align: center;
+}
+
+.artist-card img { width: 100%; }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.artwork img { width: 100%; }
+
+.artwork p {
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+.site-footer {
+  background: #1a1a55;
+  color: rgb(255, 255, 255);
+  padding: 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+
+  .main-nav {
+    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    background: #7d4905;
+    padding: 1rem 2rem;
+  }
+
+  #nav-toggle:checked + .hamburger + .main-nav {
+    display: grid;
+  }
+
+  .artist-grid, .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .artist-grid, .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
