@@ -8,6 +8,16 @@ body {
   line-height: 1.6;
 }
 
+:root {
+    --dur-fast:140ms;
+    --dur-med:220ms;
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --lift: -4px;
+    --scale: 1.02;
+    --focus-ring: 3px solid #ffffff;
+
+}
+
 .site-header {
   background: #1a1a55;
   position: relative;
