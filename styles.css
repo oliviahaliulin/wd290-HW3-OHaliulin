@@ -72,7 +72,7 @@ body {
   padding: 4rem 2rem;
 }
 
-- .hero-overlay {
+.hero-overlay {
   position: absolute;
   inset: 0;
   background: rgba(247,242,234,0.85);
@@ -96,10 +96,12 @@ body {
   padding: 0.75rem 2rem;
   text-decoration: none;
   display: inline-block;
+
+  transition:
+    transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
 }
 
-transition:
-    transform var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+
 
 .button:hover {
     transform: translateY(var(--lift)) scale(var(--scale));
@@ -122,7 +124,11 @@ transition:
 .visit { background:#7d4905; padding: 4rem 2rem; }
 
 .overview-grid { display: grid; gap: 3rem; }
-.overview-quote { border-left: 6px solid #7d4905; padding-left: 2rem; font-size: 1.6rem; }
+.overview-quote {
+  border-left: 6px solid #7d4905;
+  padding-left: 2rem;
+  font-size: 1.6rem;
+}
 
 
 .artist-grid {
@@ -135,6 +141,19 @@ transition:
   background: #7d4905;
   padding: 1rem;
   text-align: center;
+  border: 2px solid #ffffff;
+  
+  transition:
+    transform var(--dur-med) var(--ease),
+    box-shadow var(--dur-med) var(--ease),
+    border-color var(--dur-med) var(--ease);
+}
+
+.artist-card:hover,
+.artist-card:focus-within {
+  transform: translateY(var(--lift));
+  box-shadow: var(--shadow-quiet);
+  border-color: rgba(255,255,255,.35);
 }
 
 .artist-card img { width: 100%; }
@@ -145,13 +164,34 @@ transition:
   gap: 2rem;
 }
 
-.artwork img { width: 100%; }
+.artwork img { width: 100%; 
+  transition: transform var(--dur-med) var(--ease); 
+}
 
+.artwork { 
+  overflow: hidden;
+}
 .artwork p {
   font-size: 0.9rem;
   color: #ffffff;
   margin-top: 0.5rem;
+  position: relative;
 }
+
+.artwork p::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 0;
+  background: #ffffff;
+  transition: width var(--dur-med) var(--ease);
+}
+
+.artwork:hover p::after,
+.artwork:focus-within p::after {
+  width: 100%;
+}
+
 
 .site-footer {
   background: #1a1a55;
@@ -187,5 +227,12 @@ transition:
 @media (max-width: 480px) {
   .artist-grid, .gallery-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  * {
+    transition: none !important;
+    transform: none !important;
   }
 }
